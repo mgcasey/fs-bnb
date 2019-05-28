@@ -1,9 +1,32 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Trips</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content>
-    <ion-button expand="full" (click)="navToExplore()">Explore Airbnb</ion-button>
-</ion-content>
+<ion-header>
+    <ion-toolbar>
+      <ion-title>
+        Trips
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <h2 class="ion-padding">No upcoming trips</h2>
+    <h3>Click below to find one now.</h3>
+
+    <div>
+      <ion-button fill = "outline" class = "ion-padding-left" color = "secondary" (click) = "navToExplore">Explore Airbnb</ion-button> 
+    </div>
+
+    <ion-list lines="none">
+        <ion-list-header>
+            <ion-label>Your Trips</ion-label>
+        </ion-list-header>
+            <ion-item href="rental1">
+              <ion-icon slot="start" color="medium" name="book"></ion-icon>
+              <ion-label>Current Trip</ion-label>
+            </ion-item>
+            <ion-item href="https://www.cac.es/va/hemisferic/descubre-el-hemisferic/descubre-el-hemisferic.html">
+              <ion-icon slot="start" color="medium" name="book"></ion-icon>
+              <ion-label>Past Trips: Valencia, Spain</ion-label>
+            </ion-item>
+
+    </ion-list>
+  </ion-content>
