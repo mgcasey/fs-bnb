@@ -14,17 +14,20 @@
 <!-- can also do something like 
 <div *ngIf = "currentUser"> and if there is a currentUSer, will render, but
   if no currentUser defined (auto assign to undefined), then won't-->
-  <h2 class="ion-padding">You have no unread messages.</h2>
-  <div>
-     <h3 class = "ion-padding">Your inbox is empty.</h3>
-  </div>
+  <!-- <h2 class="ion-padding">You have no unread messages.</h2> -->
+  
 
-  Users
+  <h2 class ="ion-padding">Notifications</h2>
   <ion-list>
-    <ion-item *ngFor="let user of user">
-      {{user.firstName}} {{user.lastName}}
+    <ion-item *ngFor="let email of emails">
+      <ion-label *ngIf = "email.hasRead"><ion-text color = "medium" class = "sender">{{email.sender.firstName}} {{email.sender.lastName}}</ion-text></ion-label>
+      <ion-label *ngIf = "!email.hasRead"><ion-text class = "sender">{{email.sender.firstName}} {{email.sender.lastName}}</ion-text></ion-label>
+      <ion-text *ngIf = "email.hasRead" color = "medium" class = "content">{{email.message}}</ion-text>
+      <ion-text *ngIf = "!email.hasRead" color = "primary" class = "content">{{email.message}}</ion-text>
     </ion-item>
   </ion-list>
-
+  <div>
+      <h3 class = "ion-padding">That's it!</h3>
+   </div>
 </ion-content>
 
