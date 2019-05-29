@@ -8,11 +8,12 @@ import { NavController } from '@ionic/angular';
 })
 export class Tab4Page implements OnInit {
 
-constructor(private navCtrl: NavController ) {}
+  constructor(private navCtrl: NavController ) {}
 
   navToExplore(){
     this.navCtrl.navigateForward('tabs');
   }
+  
   ngOnInit() {
   }
 
