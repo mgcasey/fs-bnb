@@ -8,11 +8,23 @@
 </ion-header>
 
 <ion-content>
+  <div *ngIf = "loggedIn == true">
+    Logout...
+  </div>
+<!-- can also do something like 
+<div *ngIf = "currentUser"> and if there is a currentUSer, will render, but
+  if no currentUser defined (auto assign to undefined), then won't-->
   <h2 class="ion-padding">You have no unread messages.</h2>
   <div>
      <h3 class = "ion-padding">Your inbox is empty.</h3>
   </div>
 
+  Users
+  <ion-list>
+    <ion-item *ngFor="let user of user">
+      {{user.firstName}} {{user.lastName}}
+    </ion-item>
+  </ion-list>
 
 </ion-content>
 
