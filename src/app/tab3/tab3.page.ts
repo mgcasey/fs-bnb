@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
 import { User } from '../models/user.model';  // use .. to go up to parent folder
-import { Payment } from '../models/Payment.model'; 
+import { email } from '../models/email.model';  
+
 //could use import { User, Payment } from '../models'
   //would have index.ts with export * from './payment.model' and same for user
 
@@ -12,27 +13,30 @@ import { Payment } from '../models/Payment.model';
 })
 export class Tab3Page {
 
-  //new stuff 
-  public users: Array<User>;
-  public payments: Array<Payment>
-  public loggedIn: boolean;
-  //
+ public emails: Array<email> = [];
   
   constructor() {
 
-    //new stuff
-    let user1 = new User();
-    user1.firstName = "Mike";
-    user1.lastName = "Case";
+  let user1 = new User();
+  user1.firstName = "Jane";
+  user1.lastName = "Elle";
 
-    let user2 = new User();
-    user1.firstName = "Jane";
-    user1.lastName = "Doe";
 
-    this.users.push(user1);
-    this.users.push(user2);
+  let email1 = new email();
+  email1.message = "Hey Michael! Just wanted to follow up on my latest booking with" +
+  " your property in San Francisco. Contact me when you get a chance!";
+  email1.hasRead = false;
+  email1.sender = user1;
 
-    loggedIn: false;
+  
+  let user2 = new User();
+  user1.firstName = "Bob";
+  user1.lastName = "Smith";
+  
+  let email2 = new email();
+  email2.message = "Hey Michael! Thanks again for such a great property. My family and I loved our time in Seattle.";
+  email2.hasRead = false;
+  email2.sender = user1;
     
 
 

@@ -7,5 +7,40 @@
 </ion-header>
 
 <ion-content>
-    <ion-button expand="full" (click)="navToExplore()">Find Homes</ion-button>
+  <ion-grid>
+    <!-- maybe try to find a way so three appear on each level before
+        a new row gets added -->
+    <ion-row>
+      <ion-col *ngFor="let rental of rentals">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>Saved</ion-card-subtitle>
+           <ion-card-title>{{rental.location}}</ion-card-title>
+         </ion-card-header>
+      
+          <ion-card-content>
+            {{rental.rentReview}}
+            <img class = "displayed"  src={{rental.picture}}>
+
+            <div ion-padding> 
+              <ion-item ion-padding>Trip Details</ion-item>
+            </div>
+            <ion-list ion-padding>
+              <ion-item>
+                <ion-note class>Accomodation: {{rental.accomodation}}</ion-note>
+              </ion-item>
+              <ion-item>
+                <ion-note>Price: ${{rental.price}}/night</ion-note>
+              </ion-item>
+              <ion-item>
+                  <ion-note *ngIf="rental.avail">Available!</ion-note>
+                  <ion-note *ngIf="!rental.avail">Not Available, check back next time!</ion-note>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+    </ion-col>
+    </ion-row>
+  </ion-grid>
+    <ion-button expand="full" (click)="navToExplore()">Find More Homes</ion-button>
 </ion-content>

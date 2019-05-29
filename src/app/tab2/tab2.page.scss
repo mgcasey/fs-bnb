@@ -1,5 +1,10 @@
 ion-button {
-    position: absolute;
+    position: fixed;
     bottom: 0;
+    width: 100%;
+}
+
+.displayed {
+    height: 100%;
     width: 100%;
 }

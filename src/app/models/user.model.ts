@@ -1,10 +1,15 @@
  export class User {
     public firstName: string;
     public lastName: string;
+    public password: string;
+    public rating: number;
 
     constructor() {
         this.firstName ="";
         this.lastName="";
+        this.password = "";
+        this.rating;
+
     }
 
 }
