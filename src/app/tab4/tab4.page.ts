@@ -12,9 +12,10 @@ import { PropertyService } from '../services/property.service';
 export class Tab4Page implements OnInit {
 
   public rentals: Array<rentalbnb> = [];
-  private propertyService: PropertyService;
+  
 
-  constructor(private navCtrl: NavController ) {
+  constructor(private navCtrl: NavController,
+    private propertyService: PropertyService ) {
 
     this.propertyService.getAllRentals();
     this.rentals = this.propertyService.rentals;
