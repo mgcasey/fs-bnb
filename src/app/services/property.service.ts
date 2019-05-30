@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { rentalbnb, rental } from '../models';
+import { rentalbnb } from '../models/rentalbnb.model';
 
 @Injectable({
   providedIn: 'root' //make available across all pages by providing in root app
@@ -63,14 +63,15 @@ export class PropertyService {
   //Returns null if not found.
   findRentalByID(id: number): rentalbnb {
     let foundRental: rentalbnb = null;
+
     this.rentals.forEach(
       (rental: rentalbnb) => {
-        if(rental.id === id) {
+        if(rental.id == id) {
           //display this property
           foundRental = rental;
         }
       }
-    )
+    );
     return foundRental;
   }
 
