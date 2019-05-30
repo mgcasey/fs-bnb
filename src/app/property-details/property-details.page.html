@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title *ngIf="currentProperty">Your Rental in {{currentProperty.location}}</ion-title>
+    <ion-title *ngIf="!currentProperty">Error: Property Not Found</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+    <ion-grid *ngIf="currentProperty">
+        <!-- maybe try to find a way so three appear on each level before
+            a new row gets added -->
+        <ion-row>
+          <!-- may need to edit this for display to be nicer and not 
+          have 10 rentals all on the same row -->
+          <ion-col> 
+            <ion-card>
+              <ion-card-header>
+                <ion-card-subtitle>Saved</ion-card-subtitle>
+               <ion-card-title>{{currentProperty.location}}</ion-card-title>
+             </ion-card-header>
+          
+              <ion-card-content (click) = "navToProperty(currentProperty)">
+                {{currentProperty.rentReview}}
+                <ion-img class = "displayed"  [src]=currentProperty.picture></ion-img>
+                <!-- <img class = "displayed"  src={{rental.picture}}> -->
+    
+                <div ion-padding> 
+                  <ion-item ion-padding>Trip Details</ion-item>
+                </div>
+                <ion-list ion-padding>
+                  <ion-item>
+                    <ion-note class>Accomodation: {{currentProperty.accomodation}}</ion-note>
+                  </ion-item>
+                  <ion-item>
+                    <ion-note>Price: ${{currentProperty.price}}/night</ion-note>
+                  </ion-item>
+                  <ion-item>
+                      <ion-note *ngIf="currentProperty.avail">Available!</ion-note>
+                      <ion-note *ngIf="!currentProperty.avail">Not Available, check back next time!</ion-note>
+                  </ion-item>
+                </ion-list>
+              </ion-card-content>
+            </ion-card>
+        </ion-col>
+        </ion-row>
+      </ion-grid> 
+
+  <ion-grid *ngIf="!currentProperty">
+    <ion-row justify-content-center>
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+        <div text-center>
+          <h3>Sorry, but this property could not be found.</h3>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-button *ngIf="!currentProperty" size="large" (click)="navToSaved()"> Back to Saved</ion-button>
+
+</ion-content>

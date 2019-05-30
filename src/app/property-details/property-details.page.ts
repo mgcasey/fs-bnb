@@ -1,19 +1,26 @@
-import { Component } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 import { rentalbnb } from '../models/rentalbnb.model'
-import { NavigationOptions } from '@ionic/angular/dist/providers/nav-controller';
+import { NavController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-tab2',
-  templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss']
+  selector: 'app-property-details',
+  templateUrl: './property-details.page.html',
+  styleUrls: ['./property-details.page.scss'],
 })
-export class Tab2Page {
-  
+export class PropertyDetailsPage implements OnInit {
+
+  public nameOfProperty: string;
+  private propertyID: number;
+  public currentProperty: rentalbnb;
+
   public rentals: Array<rentalbnb> = [];
 
-  constructor(private navCtrl: NavController ) {
-
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private navCtrl: NavController
+  ) { 
     let rental1 = new rentalbnb();
     rental1.accomodation = "Back to Lisbon";
     rental1.location = "Lisbon, Portugal";
@@ -53,36 +60,43 @@ export class Tab2Page {
     this.rentals.push(rental3);
 
 
+
   }
 
+  ngOnInit() {
+    let receivedQueryParams = function(data) {
+      console.log(data);
+      console.log(data.params.propertyLoc);
 
-  navToExplore(){
-    this.navCtrl.navigateForward('tabs');
-  }
+      // /* will not work */ this.nameOfProperty = data.params.propertyLoc;
+    }
 
-  navToProperty(property: rentalbnb){
+    let arrow = (data: any) => {
+      this.nameOfProperty = data.params.propertyLoc;
+      this.propertyID = data.params.propertyID;
+
+      //find right property by ID
+      this.rentals.forEach(
+        (rental: rentalbnb) => {
+          if(rental.id === this.propertyID) {
+            //display this property
+            this.currentProperty = rental;
+
+          }
     
-
-    this.navCtrl
-      .navigateForward('property-details', {
-        queryParams: {
-          q: "ionic",
-          propertyLoc: property.location,
-          propertyID: property.id
         }
-      } );
+      )
+    }
 
-          /* 
-        Another way to code above
-    */
-    // let navOptions: NavigationOptions = {
-    //   queryParams: {
-    //     q: "ionic",
-    //     propertyLoc: property.location 
-    //   }
-    // }
-    // this.navCtrl.navigateForward("abc", navOptions);
+    this.activatedRoute.queryParamMap.subscribe(
+      //receivedQueryParams
+      // (data: any) => console.log(data.params.propertyLoc)
+      arrow
+    );
+  }
 
+  navToSaved(){
+    this.navCtrl.navigateForward('tabs/tab2');
   }
 
 }

@@ -11,16 +11,19 @@
     <!-- maybe try to find a way so three appear on each level before
         a new row gets added -->
     <ion-row>
-      <ion-col *ngFor="let rental of rentals">
+      <!-- may need to edit this for display to be nicer and not 
+      have 10 rentals all on the same row -->
+      <ion-col *ngFor="let rental of rentals"> 
         <ion-card>
           <ion-card-header>
             <ion-card-subtitle>Saved</ion-card-subtitle>
            <ion-card-title>{{rental.location}}</ion-card-title>
          </ion-card-header>
       
-          <ion-card-content>
+          <ion-card-content (click) = "navToProperty(rental)">
             {{rental.rentReview}}
-            <img class = "displayed"  src={{rental.picture}}>
+            <ion-img class = "displayed"  [src]=rental.picture></ion-img>
+            <!-- <img class = "displayed"  src={{rental.picture}}> -->
 
             <div ion-padding> 
               <ion-item ion-padding>Trip Details</ion-item>
