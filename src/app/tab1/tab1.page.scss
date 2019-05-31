@@ -1,4 +1,32 @@
 .welcome-card ion-img {
-  max-height: 35vh;
-  overflow: hidden;
+  max-height: 100vh;
+  max-width: 35vw;
+  // overflow: hidden;
+}
+
+
+:host {
+  ion-content {
+    --background: url('https://thesandyfeet.com/wp-content/uploads/2015/11/SanFrancisco-39-2-1000x667.jpg') no-repeat center center / cover;
+
+  }
+}
+:root {
+ 
+  --margin: rgba(255, 253, 253, 0.8);
+
+}
+#navbar {
+  float: left;
+
+}
+
+#whiteFade {
+  width: 30%;
+  height: 100%;
+  color: white;
+  opacity: 0.2;
+  position: absolute;
+  top: 0px;
+  left: 0px;
 }
