@@ -7,36 +7,45 @@
 </ion-header>
 
 <ion-content>
-  <div id = "whiteFade"></div>
+  <!-- <div id = "whiteFade"></div> -->
   <ion-grid>
       <ion-row>
         <ion-col>
-          <div id = "whiteFade"></div>
+          <!-- <div id = "whiteFade"></div> -->
           <div id = "navbar">
               <div>
-                  <h3>Welcome Home!</h3>
+                <ion-text>
+                    <h3>Welcome Home!</h3>
+                </ion-text>
+                  
                 </div>
                 <div padding>
                     <ion-item>
-                      <ion-label position="stacked">Location</ion-label>
-                      <ion-input color = "primary" type="text" placeholder="Location"></ion-input>
+                      <ion-label color = "primary" position="stacked">Location</ion-label>
+                      <ion-input  type="text" placeholder="Location"></ion-input>
+                    </ion-item>
+                    
+                    <ion-item>
+                      <ion-label color = "primary" position="stacked">Price Range</ion-label>
+                      <ion-range dualKnobs = "true" color = "secondary" min = "0" max = "1000" step = "100" snaps = "true" pin = "true">
+                        <ion-icon small range-left name ="cash"></ion-icon>
+                        <ion-icon range-right name = "cash"></ion-icon>
+                      </ion-range>
+                      <!-- <ion-input color = "primary" type="text" placeholder="Price Range"></ion-input> -->
                     </ion-item>
                     <ion-item>
-                      <ion-label position="stacked">Price Range</ion-label>
-                      <ion-input color = "primary" type="text" placeholder="Price Range"></ion-input>
-                    </ion-item>
-                    <ion-item>
-                        <ion-label position="stacked">Number of People</ion-label>
-                        <ion-input color = "primary" type="text" placeholder="Number of People"></ion-input>
+                        <ion-label color = "primary" position="stacked">Number of People</ion-label>
+                        <ion-input  type="text" placeholder="Number of People"></ion-input>
                       </ion-item>
                       <ion-item>
-                          <ion-label position="stacked">Dates</ion-label>
-                          <ion-input color = "primary" type="text" placeholder="Dates"></ion-input>
+                          <ion-label  color = "primary" position="stacked">Start Date</ion-label>
+                          <ion-datetime display-format ="MMM DD, YYYY" picker-format = "MMMM DD, YYYY" min = "2019" color = "primary" type="text" placeholder="Start Date"></ion-datetime>
                       </ion-item>
-                    <ion-item>
-                          <ion-label position="stacked">Rating</ion-label>
-                          <ion-input color = "primary" type="text" placeholder="Rating"></ion-input>
+                      <ion-item>
+                          <ion-label  color = "primary" position="stacked">End Date</ion-label>
+                          <ion-datetime display-format ="MMM DD, YYYY" picker-format = "MMMM DD, YYYY" min = "2019" color = "primary" type="text" placeholder="End Date"></ion-datetime>
                       </ion-item>
+                    
                 </div>
           </div>
         </ion-col>
