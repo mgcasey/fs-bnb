@@ -43,9 +43,10 @@ export class LoginPage implements OnInit {
         },
         (err) => {
           if(err.error.message) {
-            if(err.error.message.indexOf("Duplicate entry") != -1){
-              this.presentAlert();
-            }
+          
+            this.presentAlert();
+              // alert(err.error.message);
+            
           }
           //could also do
           // alert(err.error.message);
@@ -56,7 +57,7 @@ export class LoginPage implements OnInit {
   async presentAlert() {
     const alert = await this.alertCtrl.create({
       header: 'Alert',
-      subHeader: 'User already exists with this email.',
+      subHeader: 'Password and email do not match.',
       message: 'Please try again.',
       buttons: ['OK']
     });

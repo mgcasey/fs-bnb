@@ -32,7 +32,7 @@ export class RegistrationPage implements OnInit {
     console.log("Submitting to the server.");
     console.log(this.user);
     this.httpClient
-      .get("http://localhost:3000/users", this.user)
+      .post("http://localhost:3000/users", this.user)
       .subscribe(
         (response: any) => {
           console.log(response);
