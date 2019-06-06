@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, AlertController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
+import { User } from '../models';
+import { NavigationOptions } from '@ionic/angular/dist/providers/nav-controller';
 
 @Component({
   selector: 'app-login',
@@ -34,12 +36,16 @@ export class LoginPage implements OnInit {
     this.httpClient
       .post("http://localhost:3000/users/authentication", this.user)
       .subscribe(
-        (response: any) => {
+        (response: User) => {
           console.log(response);
           //pass by id / query param and then can get
-          this.navCtrl.navigateForward('tabs', {queryParams: {
-            userId: response.id
-          }}); 
+          const navOptions: NavigationOptions = {
+            queryParams: {
+              userId: response.id
+            }
+          };
+          
+          this.navCtrl.navigateForward('tabs', navOptions);
         },
         (err) => {
           if(err.error.message) {

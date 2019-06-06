@@ -4,6 +4,7 @@
     public name: string;
     public password: string;
     public email: string;
+    public id: number;
     //public rating: number;
     
 
@@ -11,6 +12,7 @@
         this.name="";
         this.password = "";
         this.email = "";
+        this.id;
 
     }
 
