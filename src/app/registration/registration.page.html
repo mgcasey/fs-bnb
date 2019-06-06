@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar>
     <ion-title color = "warning">Register</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref=""></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -13,37 +16,37 @@
         </div>
         <div padding>
             <ion-item>
-                <ion-label position="stacked">First Name</ion-label>
-                <ion-input color = "primary" type="text" placeholder="First Name"></ion-input>
+                <ion-label position="stacked">Full Name</ion-label>
+                <ion-input color = "primary" type="text" placeholder="Full Name" [(ngModel)] ="user.name"></ion-input>
             </ion-item>
-            <ion-item>
+            <!-- <ion-item>
                 <ion-label position="stacked">Last Name</ion-label>
                 <ion-input color = "primary" type="text" placeholder="Last Name"></ion-input>
-            </ion-item>
+            </ion-item> -->
             <ion-item>
                 <ion-label position="stacked">Email</ion-label>
-                <ion-input color = "primary" type="text" placeholder="Email"></ion-input>
+                <ion-input color = "primary" type="text" placeholder="Email" [(ngModel)] ="user.email"></ion-input>
             </ion-item>
-            <ion-item>
+            <!-- <ion-item>
                 <ion-label position="stacked">Phone Number</ion-label>
                 <ion-input color = "primary" type="text" placeholder="Phone Number"></ion-input>
-            </ion-item>
-            <ion-item>
+            </ion-item> -->
+            <!-- <ion-item>
               <ion-label position="stacked">Username</ion-label>
               <ion-input color = "primary" type="text" placeholder="Username"></ion-input>
-            </ion-item>
+            </ion-item> -->
             <ion-item>
               <ion-label position="stacked">Password</ion-label>
-              <ion-input color = "primary" type="text" placeholder="Password"></ion-input>
+              <ion-input color = "primary" type="text" placeholder="Password" [(ngModel)] ="user.password"></ion-input>
             </ion-item>
-            <ion-item>
+            <!-- <ion-item>
                 <ion-label position="stacked">Confirm Password</ion-label>
                 <ion-input color = "primary" type="text" placeholder="Password"></ion-input>
-              </ion-item>
+              </ion-item> -->
         </div>
       </ion-col>
 
     </ion-row>
   </ion-grid>
-  <ion-button color = "warning" size="large" (click)="navToExplore()">Welcome Home</ion-button>
+  <ion-button color = "warning" size="large" (click)="submit()">Welcome Home</ion-button>
 </ion-content>

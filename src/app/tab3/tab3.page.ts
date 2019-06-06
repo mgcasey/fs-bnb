@@ -19,8 +19,9 @@ export class Tab3Page {
   constructor() {
 
   let user1 = new User();
-  user1.firstName = "Jane";
-  user1.lastName = "Elle";
+  // user1.firstName = "Jane";
+  // user1.lastName = "Elle";
+  user1.name = "Jane Elle";
 
 
   let email1 = new email();
@@ -31,8 +32,9 @@ export class Tab3Page {
 
   
   let user2 = new User();
-  user2.firstName = "Bob";
-  user2.lastName = "Smith";
+  user2.name = "Bob Smith";
+  // user2.firstName = "Bob";
+  // user2.lastName = "Smith";
   
   let email2 = new email();
   email2.message = "Hey Michael! Thanks again for such a great property. My family and I loved our time in Seattle.";

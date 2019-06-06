@@ -1,14 +1,16 @@
  export class User {
-    public firstName: string;
-    public lastName: string;
+    //public firstName: string;
+    // public lastName: string;
+    public name: string;
     public password: string;
-    public rating: number;
+    public email: string;
+    //public rating: number;
+    
 
     constructor() {
-        this.firstName ="";
-        this.lastName="";
+        this.name="";
         this.password = "";
-        this.rating;
+        this.email = "";
 
     }
 
