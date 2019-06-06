@@ -32,18 +32,20 @@ export class LoginPage implements OnInit {
     console.log("Submitting to the server.");
     console.log(this.user);
     this.httpClient
-      .post("http://localhost:3000/api/users", this.user)
+      .post("http://localhost:3000/users/authentication", this.user)
       .subscribe(
         (response: any) => {
           console.log(response);
           //pass by id / query param and then can get
-          this.navCtrl.navigateForward('page1', {queryParams: {
+          this.navCtrl.navigateForward('tabs', {queryParams: {
             userId: response.id
           }}); 
         },
         (err) => {
-          if(err.error.message.indexOf("Duplicate entry") != -1) {
-            this.presentAlert();
+          if(err.error.message) {
+            if(err.error.message.indexOf("Duplicate entry") != -1){
+              this.presentAlert();
+            }
           }
           //could also do
           // alert(err.error.message);
