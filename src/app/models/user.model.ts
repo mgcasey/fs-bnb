@@ -12,7 +12,7 @@
         this.name="";
         this.password = "";
         this.email = "";
-        this.id;
+        this.id = 0;
 
     }
 

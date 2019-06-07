@@ -5,6 +5,11 @@ ion-item {
     margin-right: 10%;
     font-size: 20px;
 }
+
+ion-avatar {
+    margin: auto;
+    margin-top: 5%;
+}
 .firstList {
     margin-left: 11%;
     margin-right: 11%;
@@ -31,9 +36,10 @@ ion-item {
 }
 
 
-// #name{
-//     margin-left: 11%;
-// }
+#name{
+    text-align: center;
+    
+}
 
 // #prof {
 //     margin-top: 5%;

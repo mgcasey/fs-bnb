@@ -11,8 +11,10 @@ import { NavigationOptions } from '@ionic/angular/dist/providers/nav-controller'
 })
 export class LoginPage implements OnInit {
 
+  // public email: string = "";
+  // public password: string = "";
+
   public user: any = {
-    name: "",
     email: "",
     password: ""
   };
@@ -32,26 +34,36 @@ export class LoginPage implements OnInit {
 
   submit() {
     console.log("Submitting to the server.");
-    console.log(this.user);
+    // console.log(this.user);
+
+    // const authReq = {
+    //   email: this.email,
+    //   password: this.password
+    // };
+
     this.httpClient
-      .post("http://localhost:3000/users/authentication", this.user)
+      .post("http://localhost:3000/users/authentication", this.user) //used to have this.user as second param
       .subscribe(
-        (response: User) => {
+        (response: any) => {
+          const userId = response[0].id;
           console.log(response);
+          localStorage.setItem("user_id", response[0].id);
           //pass by id / query param and then can get
-          const navOptions: NavigationOptions = {
-            queryParams: {
-              userId: response.id
-            }
-          };
-          
-          this.navCtrl.navigateForward('tabs', navOptions);
+          // const navOptions: NavigationOptions = {
+          //   queryParams: {
+          //     user_id: userId
+          //   }
+          // };
+
+          this.navCtrl.navigateForward('tabs', {queryParams: {
+            user_id: userId
+          }});
+
         },
         (err) => {
           if(err.error.message) {
           
             this.presentAlert();
-              // alert(err.error.message);
             
           }
           //could also do
