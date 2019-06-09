@@ -14,4 +14,8 @@ export class Tab1Page {
     this.navCtrl.navigateForward('profile');
   }
 
+  navToPropList(){
+    this.navCtrl.navigateForward('propertylist');
+  }
+
 }

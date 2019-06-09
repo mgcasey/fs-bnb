@@ -14,8 +14,10 @@ export class Tab2Page {
   public rentals: Array<rentalbnb> = [];
   
 
-  constructor(private navCtrl: NavController,
-    private propertyService: PropertyService ) {
+  constructor(
+    private navCtrl: NavController,
+    private propertyService: PropertyService 
+    ) {
 
     this.propertyService.getAllRentals();
     this.rentals = this.propertyService.rentals;
@@ -32,7 +34,6 @@ export class Tab2Page {
     this.navCtrl
       .navigateForward('property-details', {
         queryParams: {
-          q: "ionic",
           propertyLoc: property.location,
           propertyID: property.id
         }

@@ -4,6 +4,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { rentalbnb } from '../models/rentalbnb.model'
 import { NavController } from '@ionic/angular';
 import { PropertyService } from '../services/property.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-property-details',
@@ -15,6 +16,8 @@ export class PropertyDetailsPage implements OnInit {
   private propertyID: number;
   public nameOfProperty: string;
   public currentProperty: rentalbnb;
+  public rental: rentalbnb = new rentalbnb();
+
 
   public rentals: Array<rentalbnb> = [];
 
@@ -22,7 +25,8 @@ export class PropertyDetailsPage implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private propertyService: PropertyService,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private httpClient: HttpClient
   ) { 
       this.propertyService.getAllRentals();
       //this.rentals = this.propertyService.rentals;
@@ -30,45 +34,30 @@ export class PropertyDetailsPage implements OnInit {
   }
 
   ngOnInit() {
-    // let receivedQueryParams = function(data) {
-    //   console.log(data);
-    //   console.log(data.params.propertyLoc);
-
-      // /* will not work */ this.nameOfProperty = data.params.propertyLoc;
-    //}
-
-  
-    let arrow = (data: any) => {
-      this.nameOfProperty = data.params.propertyLoc;
-      this.propertyID = data.params.propertyID;
-
-      //find right property by ID
-      // this.rentals.forEach(
-      //   (rental: rentalbnb) => {
-      //     if(rental.id === this.propertyID) {
-      //       //display this property
-      //       this.currentProperty = rental;
-
-      //     }
     
-      //   }
-      // )
-
-      this.currentProperty = 
-        this.propertyService.findRentalByID(this.propertyID);
-
-      // if(!this.currentProperty) {
-      //   alert("Property not found!");
-      //   this.navCtrl.navToSaved();
-      // }
+    let arrow = (data: any) => {
+      // this.nameOfProperty = data.params.propertyLoc;
+      this.propertyID = data.params.propertyID;
+      this.httpClient.get("http://localhost:3000/properties/get/" + this.propertyID) //localStorage.getItem("property_id"))
+      .subscribe(
+        (response: any) => {
+          console.log(response);
+          this.rental = response;
+        }
+      );
+      // this.currentProperty =
+      //   this.propertyService.findRentalByID(this.propertyID);
     };
 
     this.activatedRoute.queryParamMap.subscribe(
-      //receivedQueryParams
-      // (data: any) => console.log(data.params.propertyLoc)
       arrow
     );
   
+  }
+
+  navToSaved()
+  {
+    this.navCtrl.navigateBack('tabs/tab2');
   }
 
 

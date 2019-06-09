@@ -45,9 +45,9 @@ export class LoginPage implements OnInit {
       .post("http://localhost:3000/users/authentication", this.user) //used to have this.user as second param
       .subscribe(
         (response: any) => {
-          const userId = response[0].id;
+          const userId = response.id;
           console.log(response);
-          localStorage.setItem("user_id", response[0].id);
+          localStorage.setItem("user_id", response.id);
           //pass by id / query param and then can get
           // const navOptions: NavigationOptions = {
           //   queryParams: {

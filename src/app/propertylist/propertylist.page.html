@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>List of Properties</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+  
+</ion-header>
+
+<ion-content>
+  <ion-card class="welcome-card">
+      <ion-img src="/assets/shapes.svg"></ion-img>
+      <ion-card-header>
+        <ion-card-subtitle>Let's find you a rental!</ion-card-subtitle>
+        <ion-card-title>Welcome home!</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>See the existing rentals below. Click the tabs in order to navigate to rental specific information.</p>
+      </ion-card-content>
+    </ion-card>
+    <ion-title>Existing Rentals</ion-title>
+      <ion-grid>
+          <ion-row>
+            <ion-col *ngFor="let rental of rentalList">
+              <ion-card (click)="navToProperty(rental)">
+                <ion-card-header>
+                  <ion-card-subtitle>Available</ion-card-subtitle>
+                <ion-card-title>{{rental.location}}</ion-card-title>
+              </ion-card-header>
+            
+                <ion-card-content>
+                  <!-- {{rental.rentReview}} -->
+                  <img  class = "displayed"  src={{rental.picture}}>
+
+                  <div ion-padding> 
+                    <ion-item ion-padding>Click to view details.</ion-item>
+                  </div>
+                  
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+      </ion-grid>
+
+</ion-content>

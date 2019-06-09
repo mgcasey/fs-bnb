@@ -1,11 +1,11 @@
 export class rentalbnb {
     public location: string;
-    public rentReview: string;
+    //public rentReview: string;
     public price: number;
-    public accomodation: string;
+    public name: string;
     public picture: string;
-    public avail: boolean;
-    public rating: number;
+    //public avail: boolean;
+    //public rating: number;
     id: number; //public automatically
 
 //need to add address component,
@@ -14,12 +14,12 @@ export class rentalbnb {
 //also should probably do RATING instead of REVIEW
     constructor(){
         this.location = "";
-        this.rentReview = "";
+        //this.rentReview = "";
         this.price;
-        this.accomodation = "";
+        //this.accomodation = "";
         this.picture = "";
-        this.avail;
-        this.rating;
+        //this.avail;
+        //this.rating;
         this.id = 0;
 
     }

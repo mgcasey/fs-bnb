@@ -36,6 +36,8 @@ export class RegistrationPage implements OnInit {
       .subscribe(
         (response: any) => {
           console.log(response);
+          localStorage.setItem("user_id", response.id);
+          
           //pass by id / query param and then can get
           this.navCtrl.navigateForward('tabs', {queryParams: {
             userId: response.id
