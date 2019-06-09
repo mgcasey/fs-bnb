@@ -18,6 +18,12 @@ export class PropertyDetailsPage implements OnInit {
   public currentProperty: rentalbnb;
   public rental: rentalbnb = new rentalbnb();
 
+  public booking: any = {
+    dateTo: "",
+    dateFrom: "",
+    userId: parseInt(localStorage.getItem("user_id")),
+    propertyId: 0
+  };
 
   public rentals: Array<rentalbnb> = [];
 
@@ -38,6 +44,7 @@ export class PropertyDetailsPage implements OnInit {
     let arrow = (data: any) => {
       // this.nameOfProperty = data.params.propertyLoc;
       this.propertyID = data.params.propertyID;
+      this.booking.propertyId = this.propertyID;
       this.httpClient.get("http://localhost:3000/properties/get/" + this.propertyID) //localStorage.getItem("property_id"))
       .subscribe(
         (response: any) => {
@@ -58,6 +65,30 @@ export class PropertyDetailsPage implements OnInit {
   navToSaved()
   {
     this.navCtrl.navigateBack('tabs/tab2');
+  }
+
+  book(){
+    
+    console.log("Submitting to the server.");
+    console.log(this.booking);
+    this.httpClient
+      .post("http://localhost:3000/bookings", this.booking)
+      .subscribe(
+        (response: any) => {
+          console.log(response);
+          localStorage.setItem("booking_id", response.id);
+          
+          //pass by id / query param and then can get
+          this.navCtrl.navigateForward('tabs', {queryParams: {
+            bookingId: response.id
+          }}); 
+        },
+        (err) => {
+          console.log(err);
+          
+        }
+      );
+
   }
 
 

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <!-- <ion-title *ngIf="currentProperty">Your Rental in {{currentProperty.location}}</ion-title> -->
-    <ion-title *ngIf="currentProperty">Your Rental in {{rental.location}}</ion-title>
+    <ion-title > Rental in {{rental.location}}</ion-title>
     <!-- <ion-title *ngIf="!currentProperty">Error: Property Not Found</ion-title> -->
     <ion-buttons slot="start">
         <ion-back-button defaultHref="propertylist"></ion-back-button>
@@ -24,13 +24,13 @@
                <ion-card-title>{{rental.location}}</ion-card-title>
              </ion-card-header>
           
-              <ion-card-content (click) = "navToProperty(rental)">
+              <ion-card-content >
                 <!-- {{rental.rentReview}} -->
                 <ion-img class = "displayed"  [src]=rental.picture></ion-img>
                 <!-- <img class = "displayed"  src={{rental.picture}}> -->
     
                 <div ion-padding> 
-                  <ion-item ion-padding>Rental Details</ion-item>
+                  <ion-item ion-padding><b>Rental Details</b></ion-item>
                 </div>
                 <ion-list ion-padding>
                   <ion-item>
@@ -45,12 +45,26 @@
                       <ion-note *ngIf="!currentProperty.avail">Not Available, check back next time!</ion-note> -->
                   </ion-item> 
                 </ion-list>
+                <div ion-padding> 
+                    <ion-item ion-padding><b>Want to book? Add your dates and press book!</b></ion-item>
+                </div>
+                <ion-list>
+                  <ion-item>
+                    <ion-label>Start Date</ion-label>
+                    <ion-input placeholder = "Start Date (ex. 06/10/19)" [(ngModel)] = "booking.dateFrom"></ion-input>
+                  </ion-item>
+                  <ion-item>
+                      <ion-label>End Date</ion-label>
+                      <ion-input placeholder = "End Date (ex. 06/17/19)" [(ngModel)] = "booking.dateTo"></ion-input>
+                  </ion-item>
+                </ion-list>
+               
               </ion-card-content>
             </ion-card>
         </ion-col>
         </ion-row>
       </ion-grid> 
-
+      <ion-button expand = "full" (click) = "book()">Book Now</ion-button>
   <!-- <ion-grid *ngIf="!currentProperty">
     <ion-row justify-content-center>
       <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
