@@ -22,7 +22,8 @@ export class PropertyDetailsPage implements OnInit {
     dateTo: "",
     dateFrom: "",
     userId: parseInt(localStorage.getItem("user_id")),
-    propertyId: 0
+    propertyId: 0,
+    status: "NEW"
   };
 
   public rentals: Array<rentalbnb> = [];
